@@ -1,0 +1,94 @@
+.choices{
+    display: flex;
+    justify-content: center;
+    margin-top: 10em;
+    height: 18.5em;
+    transition: opacity .5s;
+}
+
+.swipe-choices{
+    animation: swipe 3s forwards;
+    animation-timing-function: cubic-bezier(.47,-0.02,0,1.05);
+}
+
+.choices>img{
+    width: 19.5em;
+    height: 17.3em;
+}
+
+.choices>div{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: flex-start;
+    width: 20em;
+    height: 19.8em;
+}
+
+.choice, .player, .robot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 0;
+    width: 8.5em;
+    min-width: 8.5em;
+    height: 8.5em;
+    min-height: 8.5em;
+    border-radius: 100vw;
+    background-color: white;
+    cursor: pointer;
+    transition: top .3s ease;
+}
+
+.choice:hover{
+    top: .5em;
+}
+
+.choice::after, .player::after, .robot::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1em solid;
+    border-radius: 100vw;
+    transition: box-shadow .3s;
+    box-shadow: 0 .5em rgb(170, 170, 190) inset, 0 .5em 0;
+}
+
+.choice:hover::after{
+    box-shadow: 0 .5em rgb(170, 170, 190) inset, 0 0 0;
+}
+
+.choice.paper{
+    transform: translateY(-3.5em);
+}
+
+.choice.scisors{
+    transform: translateY(-3.5em);
+}
+
+.choice.rock{
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.paper::after{
+    border-color: hsl(230, 89%, 62%);
+    color: rgb(50, 50, 180);
+}
+
+.scisors::after{
+    border-color: hsl(39, 89%, 49%);
+    color: rgb(180, 100, 70);
+}
+
+.rock::after{
+    border-color: hsl(349, 71%, 52%);
+    color: rgb(130, 30, 50);
+}
+
+@keyframes swipe {
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-100%); }
+}

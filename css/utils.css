@@ -1,0 +1,99 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    max-width: 60em;
+    margin: 3em auto 0;
+    padding: 1.2em;
+    border: .19em solid hsl(217, 16%, 45%);
+    border-radius: .7em;
+}
+
+header img{
+    width: 10em;
+    height: 7em;
+}
+
+header div{
+    width: 7em;
+    padding: .3em;
+    text-align: center;
+    font-size: 1.3em;
+    line-height: 2.1em;
+    background-color: white;
+    color: hsl(229, 64%, 46%);
+    border-radius: .5em;
+}
+
+.score{
+    font-size: 3em;
+    color:  hsl(229, 25%, 31%);
+}
+
+.rules-button{
+    display: block;
+    margin: 8em 2em 1em auto;
+    padding: .7em 2.2em;
+    font-weight: 700;
+    background-color: transparent;
+    color: white;
+    border: .1em solid;
+    border-radius: .6em;
+    cursor: pointer;
+}
+
+.modale-container{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.open-modale{
+    display: flex;
+}
+
+.shadow-back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 50%;
+}
+
+.modale{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 26em;
+    padding: 2em 2.2em;
+    border-radius: .5em;
+    background-color: white;
+    z-index: 1;
+}
+
+.modale-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+.modale-header h3{
+    font-size: 2em;
+    color: hsl(229, 25%, 31%);
+}
+
+.modale-header button{
+   height: 0;
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+}

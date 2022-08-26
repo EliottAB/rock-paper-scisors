@@ -1,0 +1,89 @@
+.battle{
+    display: none;
+    justify-content: center;
+    gap: 8em;
+    height: 23em;
+    margin-top: 5.5em;
+    opacity: 0;
+    transition: opacity .5s, gap 1s;
+}
+
+.battle svg{
+    display: none;
+    scale: 200%;
+}
+
+.pick-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pick-container p{
+    margin-bottom: 3em;
+    text-align: center;
+    font-size: 1.8em;
+    color: white;
+}
+
+.player, .robot{
+    font-size: 1.7em;
+    cursor: default;
+}
+
+.player{
+    transform: translateX(-50vw) rotate(-180deg);
+}
+
+.robot{
+    transform: translateX(50vw);
+}
+.appear-p, .appear-r{
+    transition: transform 1.5s;
+    transition-timing-function: cubic-bezier(.78,.01,.67,1);
+}
+
+.appear-p, .appear-r{
+    transform: translateX(0) rotate(0);
+}
+
+.appear-r{
+    transition: transform .2s !important;
+    transition-timing-function: none !important;
+}
+
+.tremble{
+    animation: tremble .1s infinite;
+    animation-delay: .15s;
+}
+
+@keyframes tremble {
+    0% { transform: rotate(1deg); }
+    50% { transform: rotate(-1deg); }
+    100% { transform: rotate(1deg); }
+}
+
+.end-game{
+    display: none;
+    position: absolute;
+    align-self: center;
+    margin-bottom: -4em;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.end-game p{
+    font-size: 3.8em;
+    color: white;
+}
+
+.end-game button{
+    padding: .7em 4em;
+    border: none;
+    border-radius: .3em;
+    font-weight: 700;
+    color: hsl(214, 47%, 23%);
+    background-color: white;
+    cursor: pointer;
+}
