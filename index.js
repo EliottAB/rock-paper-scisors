@@ -15,8 +15,7 @@ let userChoice
 const tambour = new Audio("./assets/tambour.mp3")
 let win
 
-const points = localStorage.getItem("score") || 0
-score.innerHTML = points
+score.innerHTML = localStorage.getItem("score") ? localStorage.getItem("score") : 0
 
 function closeModale(){
     modale.style.opacity = 0
@@ -44,6 +43,7 @@ window.addEventListener("keydown", (e)=>{
 function playAgain(){
     battle.style.opacity = 0
     setTimeout(() => {
+        win = undefined
        battle.style.display = "none"
        choices.style.display = "flex"
        choices.classList.remove("swipe-choices")
@@ -62,6 +62,7 @@ function playAgain(){
            robot.classList.remove("rock", "paper", "scisors")
            endgame.style.opacity = ""
            endgame.style.display = ""
+           playagain.style.color = ""
            playerWave.style.display = ""
            robotWave.style.display = ""
        }, 100);
@@ -100,13 +101,13 @@ function robotChoice(){
 function endGame(){
     switch (win) {
         case "player":
-            localStorage.setItem("score", (parseInt(localStorage.getItem("score")) + 1) || 1)
+            localStorage.setItem("score", (parseInt(localStorage.getItem("score")) + 1))
             score.innerHTML = localStorage.getItem("score")
             endgametext.innerHTML = "YOU WIN"
             playerWave.style.display = "flex"
             break;
         case "robot":
-            localStorage.setItem("score", (parseInt(localStorage.getItem("score")) - 1) || -1)
+            localStorage.setItem("score", (parseInt(localStorage.getItem("score")) - 1))
             score.innerHTML = localStorage.getItem("score")
             endgametext.innerHTML = "YOU LOSE"
             playagain.style.color = "hsl(349, 71%, 52%)"
