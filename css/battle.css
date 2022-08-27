@@ -8,9 +8,9 @@
     transition: opacity .5s, gap 1s;
 }
 
-.battle svg{
+.battle img{
     display: none;
-    scale: 200%;
+    width: 4em;
 }
 
 .pick-container{
@@ -71,6 +71,7 @@
     text-align: center;
     opacity: 0;
     transition: opacity 1s;
+    z-index: 1;
 }
 
 .end-game p{
@@ -86,4 +87,38 @@
     color: hsl(214, 47%, 23%);
     background-color: white;
     cursor: pointer;
+    scale: 100%;
+    transition: scale .2s;
+}
+
+.end-game button:hover{
+    scale: 110%;
+}
+
+.wave-back{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 100vw;
+    z-index: -1;
+    animation: waveboom 3s infinite linear;
+}
+
+.wave-back::before, .wave-back::after{
+    content: "";
+    position: absolute;
+    border-radius: 100vw;
+    opacity: 1;
+    animation: waveboom 3s infinite linear;
+    animation-delay: 1s;
+}
+
+.wave-back::after{
+    animation-delay: 2s;
+}
+
+@keyframes waveboom {
+    from { width: 10em; height: 10em; background-color: rgba(200, 200, 200, 0.05);}
+    to { width: 30em; height: 30em; background-color: rgba(200, 200, 200, 0);}
 }

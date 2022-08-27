@@ -41,6 +41,10 @@
     transition: top .3s ease;
 }
 
+.choice img{
+    width: 3em;
+}
+
 .choice:hover{
     top: .5em;
 }

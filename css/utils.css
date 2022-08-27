@@ -32,7 +32,8 @@ header div{
 
 .rules-button{
     display: block;
-    margin: 8em 2em 1em auto;
+    position: relative;
+    margin: 8em 2em 2em auto;
     padding: .7em 2.2em;
     font-weight: 700;
     background-color: transparent;
@@ -40,6 +41,7 @@ header div{
     border: .1em solid;
     border-radius: .6em;
     cursor: pointer;
+    z-index: 1;
 }
 
 .modale-container{
@@ -53,6 +55,7 @@ header div{
     height: 100%;
     opacity: 0;
     transition: opacity .3s;
+    z-index: 2;
 }
 
 .open-modale{
@@ -96,4 +99,12 @@ header div{
    background-color: transparent;
    border: none;
    cursor: pointer;
+}
+
+.modale-header img{
+    width: 2.5em;
+}
+
+.modale>img{
+    width: 20em;
 }

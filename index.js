@@ -9,6 +9,8 @@ const robot = document.querySelector(".robot")
 const endgame = document.querySelector(".end-game")
 const endgametext = document.querySelector(".end-game p")
 const playagain = document.querySelector(".end-game button")
+const playerWave = document.querySelector(".player .wave-back")
+const robotWave = document.querySelector(".robot .wave-back")
 let userChoice
 const tambour = new Audio("./assets/tambour.mp3")
 let win
@@ -47,18 +49,21 @@ function playAgain(){
        choices.classList.remove("swipe-choices")
        player.classList.remove("appear-p")
        robot.classList.remove("appear-r")
-       document.querySelector(".player svg:nth-child(1)").style.display = ""
-       document.querySelector(".player svg:nth-child(2)").style.display = ""
-       document.querySelector(".player svg:nth-child(3)").style.display = ""
-       document.querySelector(".robot svg:nth-child(1)").style.display = ""
-       document.querySelector(".robot svg:nth-child(2)").style.display = ""
-       document.querySelector(".robot svg:nth-child(3)").style.display = ""
+       document.querySelector(".player img:nth-child(1)").style.display = ""
+       document.querySelector(".player img:nth-child(2)").style.display = ""
+       document.querySelector(".player img:nth-child(3)").style.display = ""
+       document.querySelector(".robot img:nth-child(1)").style.display = ""
+       document.querySelector(".robot img:nth-child(2)").style.display = ""
+       document.querySelector(".robot img:nth-child(3)").style.display = ""
        setTimeout(() => {
            choices.style.opacity = "1"
            battle.style.gap = ""
            player.classList.remove("rock", "paper", "scisors")
            robot.classList.remove("rock", "paper", "scisors")
            endgame.style.opacity = ""
+           endgame.style.display = ""
+           playerWave.style.display = ""
+           robotWave.style.display = ""
        }, 100);
     }, 500);
 }
@@ -68,21 +73,21 @@ function robotChoice(){
     switch (random) {
         case 0:
             robot.classList.add("paper")
-            document.querySelector(".robot svg:nth-child(1)").style.display = "initial"
+            document.querySelector(".robot img:nth-child(1)").style.display = "initial"
             userChoice === "paper" ? win = "both" : null
             userChoice === "scisors" ? win = "player" : null
             userChoice === "rock" ? win = "robot" : null
             break;
         case 1:
             robot.classList.add("scisors")
-            document.querySelector(".robot svg:nth-child(3)").style.display = "initial"
+            document.querySelector(".robot img:nth-child(3)").style.display = "initial"
             userChoice === "paper" ? win = "robot" : null
             userChoice === "scisors" ? win = "both" : null
             userChoice === "rock" ? win = "player" : null
             break;
         case 2:
             robot.classList.add("rock")
-            document.querySelector(".robot svg:nth-child(2)").style.display = "initial"
+            document.querySelector(".robot img:nth-child(2)").style.display = "initial"
             userChoice === "paper" ? win = "player" : null
             userChoice === "scisors" ? win = "robot" : null
             userChoice === "rock" ? win = "both" : null
@@ -98,12 +103,14 @@ function endGame(){
             localStorage.setItem("score", (parseInt(localStorage.getItem("score")) + 1) || 1)
             score.innerHTML = localStorage.getItem("score")
             endgametext.innerHTML = "YOU WIN"
+            playerWave.style.display = "flex"
             break;
         case "robot":
             localStorage.setItem("score", (parseInt(localStorage.getItem("score")) - 1) || -1)
             score.innerHTML = localStorage.getItem("score")
             endgametext.innerHTML = "YOU LOSE"
             playagain.style.color = "hsl(349, 71%, 52%)"
+            robotWave.style.display = "flex"
             break;
             case "both":
             endgametext.innerHTML = "YOU... TIE"
@@ -131,15 +138,15 @@ function play(){
             player.classList.add("appear-p")
             switch (userChoice) {
                 case "paper":
-                    document.querySelector(".player svg:nth-child(1)").style.display = "flex"
+                    document.querySelector(".player img:nth-child(1)").style.display = "flex"
                     player.classList.add("paper")
                     break;
                 case "scisors":
-                    document.querySelector(".player svg:nth-child(3)").style.display = "flex"
+                    document.querySelector(".player img:nth-child(3)").style.display = "flex"
                     player.classList.add("scisors")
                     break;
                 case "rock":
-                    document.querySelector(".player svg:nth-child(2)").style.display = "flex"
+                    document.querySelector(".player img:nth-child(2)").style.display = "flex"
                     player.classList.add("rock")
                     break;
                 default:
