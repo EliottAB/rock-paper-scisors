@@ -43,29 +43,30 @@ window.addEventListener("keydown", (e)=>{
 function playAgain(){
     battle.style.opacity = 0
     setTimeout(() => {
+        userChoice = undefined
         win = undefined
-       battle.style.display = "none"
-       choices.style.display = "flex"
-       choices.classList.remove("swipe-choices")
-       player.classList.remove("appear-p")
-       robot.classList.remove("appear-r")
-       document.querySelector(".player img:nth-child(1)").style.display = ""
-       document.querySelector(".player img:nth-child(2)").style.display = ""
-       document.querySelector(".player img:nth-child(3)").style.display = ""
-       document.querySelector(".robot img:nth-child(1)").style.display = ""
-       document.querySelector(".robot img:nth-child(2)").style.display = ""
-       document.querySelector(".robot img:nth-child(3)").style.display = ""
-       setTimeout(() => {
-           choices.style.opacity = "1"
-           battle.style.gap = ""
-           player.classList.remove("rock", "paper", "scisors")
-           robot.classList.remove("rock", "paper", "scisors")
-           endgame.style.opacity = ""
-           endgame.style.display = ""
-           playagain.style.color = ""
-           playerWave.style.display = ""
-           robotWave.style.display = ""
-       }, 100);
+        battle.style.display = "none"
+        choices.style.display = "flex"
+        choices.classList.remove("swipe-choices")
+        player.classList.remove("appear-p")
+        robot.classList.remove("appear-r")
+        document.querySelector(".player img:nth-child(1)").style.display = ""
+        document.querySelector(".player img:nth-child(2)").style.display = ""
+        document.querySelector(".player img:nth-child(3)").style.display = ""
+        document.querySelector(".robot img:nth-child(1)").style.display = ""
+        document.querySelector(".robot img:nth-child(2)").style.display = ""
+        document.querySelector(".robot img:nth-child(3)").style.display = ""
+        setTimeout(() => {
+            choices.style.opacity = "1"
+            battle.style.gap = ""
+            player.classList.remove("rock", "paper", "scisors")
+            robot.classList.remove("rock", "paper", "scisors")
+            endgame.style.opacity = ""
+            endgame.style.display = ""
+            playagain.style.color = ""
+            playerWave.style.display = ""
+            robotWave.style.display = ""
+        }, 100);
     }, 500);
 }
 
@@ -123,7 +124,7 @@ function endGame(){
         battle.style.gap = "24em"
         setTimeout(() => {
             endgame.style.opacity = "1"
-        }, 1000);
+        }, 0);
     }
 
 function play(){
@@ -175,7 +176,9 @@ function play(){
 
 document.querySelectorAll(".choice").forEach(choice => {
     choice.addEventListener("click", (e)=>{
-        userChoice = e.target.getAttribute("choice")
-        play()
+        if (userChoice === undefined) {
+            userChoice = e.target.getAttribute("choice")
+            play()
+        }
     })
 });
