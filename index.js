@@ -15,7 +15,12 @@ let userChoice
 const tambour = new Audio("./assets/tambour.mp3")
 let win
 
-score.innerHTML = localStorage.getItem("score") ? localStorage.getItem("score") : 0
+if (localStorage.getItem("score")) {
+    score.innerHTML = localStorage.getItem("score")
+}else{
+    localStorage.setItem("score", 0)
+    score.innerHTML = 0
+}
 
 function closeModale(){
     modale.style.opacity = 0
