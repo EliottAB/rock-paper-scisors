@@ -32,7 +32,11 @@ rulesButton.addEventListener("click", ()=>{
 })
 
 closModalBtn.addEventListener("click", () => closeModale())
-playagain.addEventListener("click", () => playAgain())
+playagain.addEventListener("click", () => {
+    if (win !== undefined) {
+        playAgain()
+    }
+})
 
 window.addEventListener("keydown", (e)=>{
     if(e.key === "Escape" && modale.classList.length == 2){
@@ -42,9 +46,9 @@ window.addEventListener("keydown", (e)=>{
 
 function playAgain(){
     battle.style.opacity = 0
+    userChoice = undefined
+    win = undefined
     setTimeout(() => {
-        userChoice = undefined
-        win = undefined
         battle.style.display = "none"
         choices.style.display = "flex"
         choices.classList.remove("swipe-choices")
